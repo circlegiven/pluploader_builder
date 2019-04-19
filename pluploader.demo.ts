@@ -1,5 +1,6 @@
 import {PluploaderOptions} from "./pluploader.options";
 import {ElementRef, ViewChild} from "@angular/core";
+import {PluploaderMethod} from "./pluploader.method";
 
 declare let pluploader;
 
@@ -24,6 +25,12 @@ export class PluploaderDemo {
         .MaxFileSize(0)
         .PreventDuplicates(true)
         .builder()
+      )
+      .init(new PluploaderMethod.MethodBuilder()
+          .PostInit(() => {
+
+          })
+          .build()
       )
       .build()
     );
