@@ -70,7 +70,7 @@ export namespace PluploaderOptions {
      * @constructor
      */
     Url(value: string): OptionsBuilder {
-      this._browseButton = value;
+      this._url = value;
       return this;
     }
     get url() {
@@ -501,7 +501,7 @@ export namespace PluploaderOptions {
   export class FileFiltersBuilder {
     private _mimeTypes;
     private _maxFileSize: number | string;
-    private _preventDuplicates: boolean;
+    private _preventDuplicate: boolean;
     private _preventEmpty: boolean;
 
     /**
@@ -548,12 +548,12 @@ export namespace PluploaderOptions {
      * @return {Pluploader.FileFiltersBuilder}
      * @constructor
      */
-    PreventDuplicates(value: boolean): FileFiltersBuilder {
-      this._preventDuplicates = value;
+    PreventDuplicate(value: boolean): FileFiltersBuilder {
+      this._preventDuplicate = value;
       return this;
     }
-    get preventDuplicates(): boolean {
-      return this._preventDuplicates;
+    get preventDuplicate(): boolean {
+      return this._preventDuplicate;
     }
 
     /**
@@ -584,7 +584,7 @@ export namespace PluploaderOptions {
   export class FileFilters {
     private max_file_size: number | string = 0;
     private mime_types = [];
-    private prevent_duplicates: boolean = false;
+    private prevent_duplicate: boolean = false;
     private prevent_empty: boolean = true;
 
     constructor(builder: FileFiltersBuilder) {
@@ -594,8 +594,8 @@ export namespace PluploaderOptions {
       if (!_.isNil(builder.mimeTypes)) {
         this.mime_types = builder.mimeTypes;
       }
-      if (!_.isNil(builder.preventDuplicates)) {
-        this.prevent_duplicates = builder.preventDuplicates;
+      if (!_.isNil(builder.preventDuplicate)) {
+        this.prevent_duplicate = builder.preventDuplicate;
       }
       if (!_.isNil(builder.preventEmpty)) {
         this.prevent_empty = builder.preventEmpty;
