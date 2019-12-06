@@ -1,8 +1,7 @@
 import {ElementRef, ViewChild} from "@angular/core";
-import {Pluploader} from "./pluploader";
+import {Pluploader} from "./domain/pluploader";
 
-
-declare let pluploader;
+declare let plupload;
 
 export class PluploaderDemo {
 
@@ -12,7 +11,7 @@ export class PluploaderDemo {
   public chunk_uploader;
 
   testInit() {
-    this.chunk_uploader = pluploader.Uploader(new Pluploader.Uploader.Setting.OptionsBuilder()
+    this.chunk_uploader = plupload.Uploader(new Pluploader.Builder.UploaderOptionsBuilder()
       .Runtimes('html5')
       .ChunkSize(0)
       .BrowseButton(this._testElement.nativeElement)
@@ -21,12 +20,12 @@ export class PluploaderDemo {
         'Accept': 'application/json, text/plain, */*',
         'Authorization': 'TOKEN'
       })
-      .Filters(new Pluploader.Uploader.Setting.FileFiltersBuilder()
+      .Filters(new Pluploader.Builder.FileFiltersBuilder()
         .MaxFileSize(0)
         .PreventDuplicates(true)
         .builder()
       )
-      .init(new Pluploader.Uploader.EventBuilder()
+      .init(new Pluploader.Builder.UploaderEventBuilder()
           .PostInit(() => {
 
           })
